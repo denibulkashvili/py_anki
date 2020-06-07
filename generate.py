@@ -1,10 +1,11 @@
+import os
 from utils.anki_utils import AnkiGenerator
 from utils.file_utils import FileExplorer
 
 
 if __name__ == "__main__":
 
-    file_explorer = FileExplorer()
+    file_explorer = FileExplorer(os.path.dirname(os.path.realpath(__file__)))
     anki_generator = AnkiGenerator()
 
     files = file_explorer.list_all_files("md")
@@ -22,4 +23,4 @@ if __name__ == "__main__":
     [deck.add_note(note) for note in anki_notes]
 
     # save to file
-    anki_generator.create_deck_file(deck, "prepper.apkg")
+    anki_generator.create_deck_file(deck, "deck.apkg")

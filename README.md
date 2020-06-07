@@ -19,21 +19,16 @@ pip install markdown-to-json genanki
   * id
   * question 
   * answer
+  * should be separated by `---`
+  * each line should should start with `-`
 
 Example 
 ```
-# ID
-116636636
-# Question
-What is the value of `PI`?
-# Answer
-3.14
-```
-
-### 3. Convert `.md` files to `.json` 
-
-```
-md_to_json -o deck.json ./notes/**/*.md
+---
+- 116636636
+- What is the value of `PI`?
+- 3.14
+---
 ```
 
 ### 4. Generate new deck

@@ -1,16 +1,15 @@
 import os
 import glob
 
-CHAPTERS = "D:\\Projects\\PrepperApp\\py_deck\\notes\\chapters\\"
-
+NOTES = '/notes'
 
 class FileExplorer:
-    def __init__(self, chapters=CHAPTERS):
-        self.chapters = chapters
+    def __init__(self, root):
+        self.root = root + NOTES
 
     def list_all_files(self, extension=".md"):
         """Lists all the files with passed extension (default='.md')"""
-        return [f for f in glob.glob(self.chapters + f"**/*.{extension}", recursive=True)]
+        return [f for f in glob.glob(self.root + f"**/*.{extension}", recursive=True)]
 
     def __trim_starting_chars(self, str):
         if str.startswith("- "):
