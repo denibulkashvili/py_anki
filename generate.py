@@ -12,6 +12,7 @@ if __name__ == "__main__":
 
     notes = []
     for file in files:
+        file_explorer.generate_question_ids(file)
         notes = notes + file_explorer.parse_file(file)
 
     print(notes[:4])
