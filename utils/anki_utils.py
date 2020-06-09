@@ -1,10 +1,7 @@
 """Anki Generator module"""
 import genanki
 
-DEFAULT = {
-    "id": 2016547257,
-    "name": "My Deck"
-}
+DEFAULT_NAME = "Default Deck"
 
 MODEL = genanki.Model(
     1283770623,
@@ -19,17 +16,17 @@ MODEL = genanki.Model(
     ],
 )
 
-def _generate_deck_id(deck_name):
+def generate_deck_id(deck_name):
     """Generates deck id from the deck name"""
-    return deck_name.lower().replace(" ", "_")
+    return hash(deck_name)
 
 class AnkiGenerator:
     """Generates Anki Decks"""
-    def __init__(self, deck_id=DEFAULT["id"], deck_name=DEFAULT["name"]):
-        self.deck_id = deck_id
+    def __init__(self, deck_name=DEFAULT_NAME):
         self.deck_name = deck_name
+        self.deck_id = generate_deck_id(self.deck_name)
         self.model = MODEL
-   
+
     def create_deck(self):
         """Creates new deck"""
         return genanki.Deck(self.deck_id, self.deck_name)
@@ -45,7 +42,8 @@ class AnkiGenerator:
         except ValueError:
             print("ValueError", note[0])
 
-    @classmethod
-    def create_deck_file(cls, deck, file_name="deck.apkg"):
+    def create_deck_file(self, deck, file_name=""):
         """Creates an .apkg deck file"""
+        if len(file_name) == 0:
+            file_name = f"{self.deck_name}.apkg"
         return genanki.Package(deck).write_to_file(file_name)

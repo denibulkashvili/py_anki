@@ -34,5 +34,5 @@ Example
 ### 4. Generate new deck
 
 ```
-python generate.py
+python generate.py [deck_name]
 ```
