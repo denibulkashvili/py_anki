@@ -1,3 +1,4 @@
+"""Main generator modlue"""
 import os
 from utils.anki_utils import AnkiGenerator
 from utils.file_utils import FileExplorer
@@ -14,8 +15,6 @@ if __name__ == "__main__":
     for file in files:
         file_explorer.generate_question_ids(file)
         notes = notes + file_explorer.parse_file(file)
-
-    print(notes[:4])
 
     deck = anki_generator.create_deck()
     anki_notes = [anki_generator.create_anki_note(note) for note in notes]

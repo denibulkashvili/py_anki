@@ -1,3 +1,4 @@
+"""Anki Generator module"""
 import genanki
 
 SETTINGS = {
@@ -37,7 +38,7 @@ class AnkiGenerator:
 
     def create_anki_note(self, note):
         try:
-            id = int(note[0].rstrip("\r\n"))
+            note_id = int(note[0].rstrip("\r\n"))
             fields = note[1:]
             # print(id)
             # print(fields)

@@ -1,4 +1,4 @@
-import os
+"""File Explorer Module"""
 import glob
 import uuid
 
