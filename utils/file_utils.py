@@ -16,6 +16,8 @@ class FileExplorer:
     def __trim_starting_chars(self, string):
         if string.startswith("- "):
             return string[2:]
+        elif string.startswith("-"):
+            return string[1:]
         return string
 
     def parse_file(self, file_name):
@@ -39,7 +41,6 @@ class FileExplorer:
 
     def generate_question_ids(self, file_name):
         """Traverse files and generate rand ids for each question if not exist"""
-        print('file', file_name)
 
         with open(file_name, "r", encoding="utf8") as reader:
             data = reader.readlines()
@@ -54,6 +55,8 @@ class FileExplorer:
                     if len(note_id) == 1:
                         new_id = str(uuid.uuid4()) + '\n'
                         data[index + 1] = f'- {new_id}'
+
+        print(data)
 
         with open(file_name, "w", encoding="utf8") as writer:
             writer.writelines(data)

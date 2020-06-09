@@ -41,10 +41,10 @@ class AnkiGenerator:
     def create_anki_note(self, note):
         """Creates new anki note"""
         try:
-            note_id = int(note[0].rstrip("\r\n"))
+            note_id = note[0]
+            if note_id.endswith("\r\n"):
+                note_id = note[0].rstrip("\r\n")
             fields = note[1:]
-            # print(id)
-            # print(fields)
             return genanki.Note(model=self.model, guid=note_id, fields=fields)
         except ValueError:
             print("ValueError")
