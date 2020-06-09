@@ -4,15 +4,13 @@
 
 ## Tools used
 
-* Python 3
 * [@kerrickstaley / genanki: A Library for Generating Anki Decks](https://github.com/kerrickstaley/genanki)
-* [@njvack / Markdown to JSON converter](https://github.com/njvack/markdown-to-json)
 
 ## Instructios 
 
 ### 1. Install dependencies 
 ```
-pip install markdown-to-json genanki 
+pip install genanki 
 ```
 
 ### 2. Add new cards to `.md` files inside `notes/` directory. Each card should include:
