@@ -42,9 +42,9 @@ class AnkiGenerator:
             fields = note[1:]
             # print(id)
             # print(fields)
-            return genanki.Note(model=self.model, guid=id, fields=fields)
+            return genanki.Note(model=self.model, guid=note_id, fields=fields)
         except ValueError:
-            print("except")
+            print("ValueError")
             print(note[0])
 
     def create_deck_file(self, deck, file_name="deck.apkg"):
