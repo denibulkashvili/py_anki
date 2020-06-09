@@ -20,7 +20,8 @@ if __name__ == "__main__":
     anki_notes = [anki_generator.create_anki_note(note) for note in notes]
 
     # add all notes to deck
-    [deck.add_note(note) for note in anki_notes]
+    for note in anki_notes:
+        deck.add_note(note)
 
     # save to file
     anki_generator.create_deck_file(deck, "deck.apkg")

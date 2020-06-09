@@ -10,6 +10,7 @@ SETTINGS = {
 
 
 class AnkiGenerator:
+    """Generates Anki Decks"""
     def __init__(
         self, deck_id=2016547257, deck_name="My Deck", model_id=1283770623, model_name="My Model"
     ):
@@ -34,9 +35,11 @@ class AnkiGenerator:
         )
 
     def create_deck(self):
+        """Creates new deck"""
         return genanki.Deck(self.deck_id, self.deck_name)
 
     def create_anki_note(self, note):
+        """Creates new anki note"""
         try:
             note_id = int(note[0].rstrip("\r\n"))
             fields = note[1:]
@@ -48,4 +51,5 @@ class AnkiGenerator:
             print(note[0])
 
     def create_deck_file(self, deck, file_name="deck.apkg"):
+        """Creates an .apkg deck file"""
         return genanki.Package(deck).write_to_file(file_name)

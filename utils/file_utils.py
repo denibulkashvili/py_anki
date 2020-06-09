@@ -5,6 +5,7 @@ import uuid
 NOTES = '/notes'
 
 class FileExplorer:
+    """Handles files realted operations"""
     def __init__(self, root):
         self.root = root + NOTES
 
@@ -50,7 +51,7 @@ class FileExplorer:
                 if line.startswith("---"):
                     note_id = self.__trim_starting_chars(data[index + 1])
 
-                    if(len(note_id) == 1):
+                    if len(note_id) == 1:
                         new_id = str(uuid.uuid4()) + '\n'
                         data[index + 1] = f'- {new_id}'
 
