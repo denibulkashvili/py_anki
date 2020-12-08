@@ -1,6 +1,6 @@
 ## Description
 
-`py_deck` is a Python tool to recursively generate new Anki decks from a collection of Markdown files.
+`py_deck` is a Python script to generate new Anki decks from Markdown files recursively.
 
 ## Tools used
 

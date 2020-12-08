@@ -1,4 +1,4 @@
-"""Main generator modlue"""
+"""Main generator module"""
 import os
 import sys
 from utils.anki_utils import AnkiGenerator
