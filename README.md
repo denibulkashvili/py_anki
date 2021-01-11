@@ -29,12 +29,13 @@ Example
 ---
 ```
 
-### 4. Generate new deck
+### 3. Generate new deck
 
 ```
 python generate.py [deck_name] [path]
 ```
-Example
+Examples
 ```
 python generate.py my_deck notes
+python generate.py my_deck /home/abs/path/to/my/dir/
 ```
