@@ -3,14 +3,15 @@ import os
 import sys
 from utils.anki_utils import AnkiGenerator
 from utils.file_utils import FileExplorer
+import utils.script as Scripts
 
 if __name__ == "__main__":
-    deck_name = sys.argv[1]
+    deck_name, dir_name = Scripts.get_args(sys.argv)
 
     file_explorer = FileExplorer(os.path.dirname(os.path.realpath(__file__)))
     anki_generator = AnkiGenerator(deck_name)
 
-    files = file_explorer.list_all_files("md")
+    files = file_explorer.list_all_files(dir_name)
 
     notes = []
     for file in files:

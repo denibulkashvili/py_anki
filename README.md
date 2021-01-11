@@ -6,7 +6,7 @@
 
 * [@kerrickstaley / genanki: A Library for Generating Anki Decks](https://github.com/kerrickstaley/genanki)
 
-## Instructios 
+## Instructions 
 
 ### 1. Install dependencies 
 ```
