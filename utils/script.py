@@ -1,4 +1,5 @@
 """Script Utils"""
+import sys
 
 def print_help():
     """Print help message"""
@@ -11,7 +12,9 @@ def get_args(args):
     if len(args) > 1:
         deck_name = args[1]
     else:
-        raise Exception("Error! Input deck name")
+        print("Input deck name!\n")
+        print_help()
+        sys.exit()
 
     if len(args.argv) > 2:
         dir_name = args[2]
