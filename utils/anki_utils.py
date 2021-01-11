@@ -5,7 +5,7 @@ DEFAULT_NAME = "Default Deck"
 
 MODEL = genanki.Model(
     1283770623,
-    "My Model",
+    "Default",
     fields=[{"name": "Question"}, {"name": "Answer"}],
     templates=[
         {
@@ -28,11 +28,11 @@ class AnkiGenerator:
         self.model = MODEL
 
     def create_deck(self):
-        """Creates new deck"""
+        """Creates a new deck"""
         return genanki.Deck(self.deck_id, self.deck_name)
 
     def create_anki_note(self, note):
-        """Creates new anki note"""
+        """Creates a new anki note"""
         try:
             note_id = note[0]
             if note_id.endswith("\r\n"):
@@ -42,8 +42,6 @@ class AnkiGenerator:
         except ValueError:
             print("ValueError", note[0])
 
-    def create_deck_file(self, deck, file_name=""):
+    def create_deck_file(self, deck):
         """Creates an .apkg deck file"""
-        if len(file_name) == 0:
-            file_name = f"{self.deck_name}.apkg"
-        return genanki.Package(deck).write_to_file(file_name)
+        return genanki.Package(deck).write_to_file(f"{self.deck_name}.apkg")

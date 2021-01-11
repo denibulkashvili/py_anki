@@ -32,5 +32,9 @@ Example
 ### 4. Generate new deck
 
 ```
-python generate.py [deck_name]
+python generate.py [deck_name] [path]
+```
+E.g.
+```
+python generate.py my_deck notes
 ```

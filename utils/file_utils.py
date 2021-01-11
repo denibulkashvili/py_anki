@@ -1,38 +1,38 @@
 """File Explorer Module"""
-import glob
+# import glob
 import uuid
 import os
-
-NOTES_DIR = '/'
 
 class FileExplorer:
     """Handles files realted operations"""
     def __init__(self, root):
-        self.root = root + NOTES_DIR
+        self.root = root + '/'
 
-    def __trim_starting_chars(self, string):
-        if string.startswith("- "):
-            return string[2:]
-        elif string.startswith("-"):
-            return string[1:]
-        return string
+    def __trim_starting_chars(self, line):
+        """Trim starting character '-' from the beginning of the line"""
+        if line.startswith("- "):
+            return line[2:]
+        if line.startswith("-"):
+            return line[1:]
+        return line
 
     def list_all_files(self, dir_name, extension=".md"):
         """Lists all the files with passed extension (default='.md')"""
-        sub_dirs = [dir for dir in os.listdir(self.root) if os.path.isdir(dir)]
-        print(sub_dirs, self.root)
-
+        path = self.root
         if dir_name:
-            # select dir
-            target_dir = sub_dirs[dir_name]
-            root = self.root + target_dir + f"**/*.{extension}"
-        else:
-            # select all dirs
-            root = self.root + f"**/*.{extension}"
-
-        files = [f for f in glob.glob(root, recursive=True)]
-        print(files)
+            path = dir_name
+        files = [os.path.join(root_dir, file) 
+                        for root_dir, dirs, files in os.walk(os.path.abspath(path)) if len(files)
+                        for file in files if file.endswith(extension)]
         return files
+
+    def get_notes_from_files(self, files):
+        """Gets all the notes from a list of files"""
+        notes = []
+        for file in files:
+            self.generate_question_ids(file)
+            notes = notes + self.parse_file(file)
+        return notes
 
     def parse_file(self, file_name):
         """Returns a list of note"""
