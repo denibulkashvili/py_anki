@@ -34,7 +34,7 @@ Example
 ```
 python generate.py [deck_name] [path]
 ```
-E.g.
+Example
 ```
 python generate.py my_deck notes
 ```
