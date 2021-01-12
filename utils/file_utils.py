@@ -2,6 +2,7 @@
 # import glob
 import uuid
 import os
+import sys
 
 class FileExplorer:
     """Handles files realted operations"""
@@ -40,15 +41,19 @@ class FileExplorer:
             data = file.readlines()
 
             notes = []
-            for index, line in enumerate(data):
-                if index == len(data) - 1:
-                    break
-                if line.startswith("---"):
-                    note_id = self.__trim_starting_chars(data[index + 1])
-                    question = self.__trim_starting_chars(data[index + 2])
-                    answer = self.__trim_starting_chars(data[index + 3])
-                    note = [note_id, question, answer]
-                    notes.append(note)
+            try:
+                for index, line in enumerate(data):
+                    if index == len(data) - 1:
+                        break
+                    if line.startswith("---"):
+                        note_id = self.__trim_starting_chars(data[index + 1])
+                        question = self.__trim_starting_chars(data[index + 2])
+                        answer = self.__trim_starting_chars(data[index + 3])
+                        note = [note_id, question, answer]
+                        notes.append(note)
+            except IndexError:
+                print(f'Parsing error in file "{file_name}"')
+                sys.exit()
 
             return notes
 
